@@ -1,0 +1,7 @@
+pymem
+keyboard
+tkinter
+tkkbootstrap
+toml
+jsonschema
+requests
