@@ -23,7 +23,9 @@ class UserTab(UI.Frame):
       self.user_res = requests.get(urljoin(API_ENDPOINT, "user"), data=self.decoded_token['id'])
       self.data = self.user_res.json()
 
-      UI.Label(master=self, text=self.data['name'], font=("Calibri", 20, "bold")).grid(column=0, row=0, sticky=UI.W)
+      UI.Label(master=self, text="USERNAME", font=("Arial", 10, "bold")).grid(column=0, row=0, sticky=UI.W, padx=(0, 30))
+      UI.Label(master=self, text=self.data['name']).grid(column=1, row=0, sticky=UI.W)
+
       UI.Label(master=self, text="EMAIL", font=("Arial", 10, "bold")).grid(column=0, row=1, sticky=UI.W)
       UI.Label(master=self, text=self.data['email']).grid(column=1, row=1, sticky=UI.W)
 

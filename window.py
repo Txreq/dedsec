@@ -5,7 +5,7 @@ from views.index import MainTab
 from views.settings import SettingsTab
 from views.user import UserTab
 
-WIN_WIDTH = 650
+WIN_WIDTH = 600
 WIN_HEIGHT = 350
 SETTINGS_WINDOW_SHOWN = False
 

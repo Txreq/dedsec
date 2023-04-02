@@ -32,10 +32,8 @@ SETTINGS_SCHEMA = {
             "type": "object",
             "properties": {
                 "ENABLED": {"type": "integer", "minimum": 0, "maximum": 1},
-                "TEAM": {"type": "integer", "minimum": 0, "maximum": 1},
-                "TEAM_COLOR": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 255}, "minItems": 3, "maxItems": 3},
-                "ENEMY": {"type": "integer", "minimum": 0, "maximum": 1},
-                "ENEMY_COLOR": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 255}, "minItems": 3, "maxItems": 3}
+                "ENEMY_COLOR": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 255}, "minItems": 3, "maxItems": 3},
+                "OPACITY": {"type": "integer", "minimum": 0, "maximum": 100},
             },
             "required": ["ENABLED"]
         },
