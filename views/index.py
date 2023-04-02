@@ -38,8 +38,8 @@ class MainTab(UI.Frame):
     self.process_status_label = UI.Label(master=self, textvariable=self.process_status_str)
 
     # footer
-    self.version_label = UI.Label(text="vesion 2.0 (closed beta)", style="light", font="Inter 8").place(x=5, y=(25))
-    self.copyrights_label = UI.Label(text="made by Txreq", style="light", font="Inter 8").place(x=5, y=(45))
+    self.version_label = UI.Label(text="vesion 2.0 (closed beta)", style="light", font="Inter 8").place(x=5, y=(30))
+    self.copyrights_label = UI.Label(text="made by Txreq", style="light", font="Inter 8").place(x=5, y=(50))
     
     # settings window
     self.settings_button = UI.Button(
