@@ -1,85 +1,85 @@
 {
- "version": "auto-py-to-exe-configuration_v1",
- "pyinstallerOptions": [
-  {
-   "optionDest": "noconfirm",
-   "value": true
-  },
-  {
-   "optionDest": "filenames",
-   "value": "C:/Users/tareq/dedsec/main.py"
-  },
-  {
-   "optionDest": "onefile",
-   "value": true
-  },
-  {
-   "optionDest": "console",
-   "value": false
-  },
-  {
-   "optionDest": "icon_file",
-   "value": "C:/Users/tareq/dedsec/assets/512.ico"
-  },
-  {
-   "optionDest": "name",
-   "value": "dedsec"
-  },
-  {
-   "optionDest": "upx_dir",
-   "value": "C:/Users/tareq/dedsec/build"
-  },
-  {
-   "optionDest": "ascii",
-   "value": true
-  },
-  {
-   "optionDest": "clean_build",
-   "value": true
-  },
-  {
-   "optionDest": "strip",
-   "value": false
-  },
-  {
-   "optionDest": "noupx",
-   "value": false
-  },
-  {
-   "optionDest": "disable_windowed_traceback",
-   "value": false
-  },
-  {
-   "optionDest": "embed_manifest",
-   "value": true
-  },
-  {
-   "optionDest": "uac_admin",
-   "value": false
-  },
-  {
-   "optionDest": "uac_uiaccess",
-   "value": false
-  },
-  {
-   "optionDest": "win_private_assemblies",
-   "value": true
-  },
-  {
-   "optionDest": "win_no_prefer_redirects",
-   "value": false
-  },
-  {
-   "optionDest": "bootloader_ignore_signals",
-   "value": false
-  },
-  {
-   "optionDest": "argv_emulation",
-   "value": false
+  "version": "auto-py-to-exe-configuration_v1",
+  "pyinstallerOptions": [
+    {
+      "optionDest": "noconfirm",
+      "value": true
+    },
+    {
+      "optionDest": "filenames",
+      "value": "C:/Users/tareq/dedsec/main.py"
+    },
+    {
+      "optionDest": "onefile",
+      "value": true
+    },
+    {
+      "optionDest": "console",
+      "value": false
+    },
+    {
+      "optionDest": "icon_file",
+      "value": "C:/Users/tareq/dedsec/assets/sec.ico"
+    },
+    {
+      "optionDest": "name",
+      "value": "dedsec"
+    },
+    {
+      "optionDest": "upx_dir",
+      "value": "C:/Users/tareq/dedsec/build"
+    },
+    {
+      "optionDest": "ascii",
+      "value": true
+    },
+    {
+      "optionDest": "clean_build",
+      "value": true
+    },
+    {
+      "optionDest": "strip",
+      "value": false
+    },
+    {
+      "optionDest": "noupx",
+      "value": false
+    },
+    {
+      "optionDest": "disable_windowed_traceback",
+      "value": false
+    },
+    {
+      "optionDest": "embed_manifest",
+      "value": true
+    },
+    {
+      "optionDest": "uac_admin",
+      "value": false
+    },
+    {
+      "optionDest": "uac_uiaccess",
+      "value": false
+    },
+    {
+      "optionDest": "win_private_assemblies",
+      "value": true
+    },
+    {
+      "optionDest": "win_no_prefer_redirects",
+      "value": false
+    },
+    {
+      "optionDest": "bootloader_ignore_signals",
+      "value": false
+    },
+    {
+      "optionDest": "argv_emulation",
+      "value": false
+    }
+  ],
+  "nonPyinstallerOptions": {
+    "increaseRecursionLimit": true,
+    "manualArguments": ""
   }
- ],
- "nonPyinstallerOptions": {
-  "increaseRecursionLimit": true,
-  "manualArguments": ""
- }
 }

@@ -6,7 +6,8 @@ import hashlib
 import requests
 import ctypes
 
-API_ENDPOINT = "http://localhost:3000/api/"
+# API_ENDPOINT = "http://localhost:3000/api/"
+API_ENDPOINT = "https://dedcorp.vercel.app/api/"
 
 ASCII = """
 \t\t

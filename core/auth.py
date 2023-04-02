@@ -26,7 +26,7 @@ Y = (MONITOR_HEIGHT - AUTH_WIN_HEIGHT) / 2
 class AuthWindow(UI.Window):
   def __init__(self):
     super().__init__(themename="dedsec")
-    self.iconbitmap("assets/128.ico")
+    self.iconbitmap("assets/sec.ico")
     self.title("dedsec authenticator")
     self.geometry('%dx%d+%d+%d' % (400, 150, X, Y))
     self.resizable(False, False)
@@ -74,7 +74,6 @@ class Auth:
 
       url = urljoin(API_ENDPOINT, "validate")
       res = requests.get(url, data=json.dumps(data))
-
       if res.status_code != 200:
         return False
       else: 
@@ -86,4 +85,5 @@ class Auth:
           return False
         
     except Exception as err:
+      print(err)
       return False
