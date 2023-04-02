@@ -6,7 +6,8 @@ import requests
 import json
 
 from ttkbootstrap.dialogs.dialogs import Messagebox
-from lib.utils import HardwareSpec, Alert 
+from lib.utils import HardwareSpec, Alert, API_ENDPOINT
+from urllib.parse import urljoin
 
 TOKEN_SERVICE = "DEDSEC_TOKEN"
 HWID_SERVICE = "DEDSEC_HWID"
@@ -17,6 +18,7 @@ AUTH_WIN_HEIGHT = 250
 
 MONITOR_WIDTH = ctypes.windll.user32.GetSystemMetrics(0)
 MONITOR_HEIGHT = ctypes.windll.user32.GetSystemMetrics(1)
+
 
 X = (MONITOR_WIDTH - AUTH_WIN_WIDTH) / 2
 Y = (MONITOR_HEIGHT - AUTH_WIN_HEIGHT) / 2
@@ -42,10 +44,12 @@ class AuthWindow(UI.Window):
 
 
   def validate_user(self):
-    if Auth.validate(self.token_entry_value.get()):
+    is_valid = Auth.validate(self.token_entry_value.get())
+
+    if is_valid:
       Alert.info("Your account has been saved successfuly, you may need a restart")
     else:
-      Alert.err()
+      Alert.err("Invalid access token was provided")
 
 class Auth:
   def __init__(self):
@@ -68,7 +72,8 @@ class Auth:
         }
       }
 
-      res = requests.get("http://localhost:3000/api/validate", data=json.dumps(data))
+      url = urljoin(API_ENDPOINT, "validate")
+      res = requests.get(url, data=json.dumps(data))
 
       if res.status_code != 200:
         return False
@@ -76,11 +81,9 @@ class Auth:
         hwid = res.json()['hwid']
         if hwid == HardwareSpec.hash():
           keyring.set_password(TOKEN_SERVICE, ACCOUNT_NAME, token)
-          
           return True
         else:
           return False
         
     except Exception as err:
-      print(err)
       return False

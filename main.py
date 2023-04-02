@@ -10,11 +10,11 @@ def main():
   is_valid_user = Auth.validate(saved_token)
 
   if not is_valid_user:
-    if bool(saved_token):
+    if not bool(saved_token):
       Alert.err("Saved access token is invalid")
-
     auth_win = AuthWindow()
     auth_win.mainloop()
+
   else:
     window = AppWindow()
     window.mainloop()

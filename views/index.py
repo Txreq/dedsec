@@ -65,7 +65,7 @@ class MainTab(UI.Frame):
       saved_token = keyring.get_password(TOKEN_SERVICE, ACCOUNT_NAME)
       is_valid_user = Auth.validate(saved_token)
 
-      if is_valid_user:
+      if not is_valid_user:
         Alert.err("Invalid access token")
 
       # threads
@@ -84,5 +84,4 @@ class MainTab(UI.Frame):
     except Exception as err:
       self.attach_btn.config(text="ERROR", state=UI.DISABLED, bootstyle=UI.DANGER)
       self.process_status_str.set("An error occured during execution")
-      print(err)
 
