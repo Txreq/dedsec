@@ -1,10 +1,7 @@
-from lib.config import Config, Toggle, UserConfig
+from core.config import Config, Toggle, UserConfig
 from ttkbootstrap.dialogs.colorchooser import ColorChooserDialog
 import lib.utils as utils
 import ttkbootstrap as UI
-
-SETTINGS_WIN_WIDTH = 380
-SETTINGS_WIN_HEIGHT = 360
 
 class SettingsTab(UI.Frame):
   def __init__(self):

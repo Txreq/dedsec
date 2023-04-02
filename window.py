@@ -14,11 +14,9 @@ class AppWindow(UI.Window):
     self.geometry(f"{WIN_WIDTH}x{WIN_HEIGHT}")
     self.iconbitmap("assets/256.ico")
 
-
     self.tab_container = UI.Notebook(master=self)
     self.tab_container.add(MainTab(), text="Home")
     self.tab_container.add(SettingsTab(), text="Settings")
-
 
     self.tab_container.pack(fill=UI.BOTH, expand=True)
 

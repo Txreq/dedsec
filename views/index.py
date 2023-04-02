@@ -1,6 +1,8 @@
 import ttkbootstrap as UI
 import pymem as mem
-from threading import Thread
+import keyring
+from core.auth import Auth, ACCOUNT_NAME, TOKEN_SERVICE
+from lib.utils import Alert
 from PIL import Image, ImageTk
 
 # services
@@ -60,6 +62,12 @@ class MainTab(UI.Frame):
       self.attach_btn.config(state=UI.DISABLED)
 
   def start(self):
+      saved_token = keyring.get_password(TOKEN_SERVICE, ACCOUNT_NAME)
+      is_valid_user = Auth.validate(saved_token)
+
+      if is_valid_user:
+        Alert.err("Invalid access token")
+
       # threads
       ESP(self.proc, self.module).thread().start()
 

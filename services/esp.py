@@ -1,6 +1,6 @@
 from lib.utils import Service, rgb_float
 from lib.offsets import Offsets
-from lib.config import UserConfig
+from core.config import UserConfig
 from threading import Thread
 from time import sleep
 import pymem as mem
