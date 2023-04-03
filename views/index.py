@@ -6,10 +6,10 @@ from lib.utils import Alert
 from PIL import Image, ImageTk
 
 # services
-from services.bhop import Bhop
 from services.radar import Radar
 from services.trigger import Trigger
 from services.esp import ESP
+from services.misc import Flash, Bhop
 
 class MainTab(UI.Frame):
   def __init__(self) -> None:
@@ -80,6 +80,7 @@ class MainTab(UI.Frame):
       Radar(self.proc, self.module).invoke()
       Bhop(self.proc, self.module).invoke()
       Trigger(self.proc, self.module).invoke()
+      Flash(self.proc, self.module).invoke()
       self.after(ms=1, func=self.loop)
     except Exception as err:
       self.attach_btn.config(text="ERROR", state=UI.DISABLED, bootstyle=UI.DANGER)

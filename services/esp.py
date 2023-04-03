@@ -5,16 +5,12 @@ from threading import Thread
 from time import sleep
 import pymem as mem
 
-
-  
 class ESP(Service):
   def __init__(self, process: mem.Pymem, module) -> None:
     super().__init__()
     self.process = process
     self.module = module
     self.raw_name = "ESP"
-
-
 
   def invoke(self):
     if not self.is_enabled():

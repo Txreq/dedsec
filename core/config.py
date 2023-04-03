@@ -41,7 +41,7 @@ SETTINGS_SCHEMA = {
             "type": "object",
             "properties": {
                 "ENABLED": {"type": "integer", "minimum": 0, "maximum": 1},
-                "VALUE": {"type": "integer", "minimum": 0, "maximum": 100}
+                "VALUE": {"type": "number", "minimum": 0.0, "maximum": 100.0}
             },
             "required": ["ENABLED", "VALUE"]
         },
@@ -49,7 +49,7 @@ SETTINGS_SCHEMA = {
             "type": "object",
             "properties": {
                 "ENABLED": {"type": "integer", "minimum": 0, "maximum": 1},
-                "VALUE": {"type": "integer", "minimum": 0}
+                "VALUE": {"type": "number", "minimum": 0.0, "maximum": 100.0}
             },
             "required": ["ENABLED", "VALUE"]
         }

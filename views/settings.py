@@ -6,14 +6,14 @@ import ttkbootstrap as UI
 
 # element blue print
 class Element:
-  def __init__(self, label: str, key: str, row: int=None) -> None:
+  def __init__(self, label: str, key: str, scale: bool=False, row: int=None) -> None:
     self.label = label
     self.key = key
+    self.scale = scale
     self.int_var = UI.IntVar(value=UserConfig[key]['ENABLED'])
-    try:
+    if scale:
       self.double_var = UI.DoubleVar(value=UserConfig[key]['VALUE'])
-    except:
-      pass
+
     self.row = row 
 
 class SettingsTab(UI.Frame):
@@ -24,7 +24,6 @@ class SettingsTab(UI.Frame):
   def render(self):
     self.container_one()
     self.container_two()
-    self.container_three()
 
     # saving button
     self.save_button = UI.Button(master=self, text="SAVE", cursor="hand2", command=Config.save)
@@ -38,24 +37,48 @@ class SettingsTab(UI.Frame):
       Element(
         label="Radar",
         key="RADAR",
+        row=0
       ),
       Element(
         label="Bunny Bhop",
         key="BHOP",
+        row=1
       ),
       Element(
         label="Trigger Bot",
         key="TRIGGER_BOT",
+        row=2
+      ),
+      Element(
+        label="FLASH",
+        key="FLASH",
+        row=3,
+        scale=True
       ),
     ]
 
-    for (i, element) in enumerate(self.cb_buttons):
+    for (element) in self.cb_buttons:
       def callback(e, element=element):
         Toggle(element.key)
 
+      def on_change(e, element=element):
+        if str(UserConfig[element.key]['VALUE']):
+          UserConfig[element.key]['VALUE'] = element.double_var.get()
+
+      
+      if element.scale:
+        item_scale = UI.Scale(
+          master=container, 
+          bootstyle="secondary", 
+          from_=0, to=100, 
+          variable=element.double_var
+        )
+        item_scale.bind("<B1-Motion>", on_change)
+        item_scale.grid(column=0, row=element.row + 1)
+
       item = UI.Checkbutton(master=container, text=element.label, variable=element.int_var)
       item.bind("<Button>", callback)
-      item.grid(column=0, row=i, sticky=UI.W, pady=5)
+      item.grid(column=0, row=element.row, sticky=UI.W, pady=5)
 
     # container
     container.pack(fill=UI.Y, side="left", padx=10, pady=10)
@@ -76,44 +99,7 @@ class SettingsTab(UI.Frame):
     self.ecb.grid(column=1, row=0, sticky=UI.W, padx=(10, 0), pady=5)
     self.ecl.grid(column=2, row=0, sticky=UI.W, pady=5)
     container.pack(fill=UI.Y, side="left", padx=10, pady=10)
-
-  def container_three(self):
-    container = UI.Frame(master=self, padding=10)
-    self.elements = [
-      Element(
-        label="FOV",
-        key="FOV",
-        row=0
-      ),
-      Element(
-        label="Flash",
-        key="FLASH",
-        row=2
-      ),
-    ]
-
-    for (i, element) in enumerate(self.elements):
-      item = UI.Checkbutton(master=container, text=element.label, variable=element.int_var)  
-
-      def on_click(e, element=element):
-        Toggle(element.key)
-
-      def on_change(e, element=element):
-        UserConfig[element.key]['VALUE'] = element.double_var.get()
-          
-
-      item_scale = UI.Scale(
-        master=container, 
-        bootstyle="secondary", 
-        from_=0, to=100, 
-        variable=element.double_var
-      )
-      item.bind("<Button>", on_click)
-      item_scale.bind("<B1-Motion>", on_change)
-
-      item.grid(column=0, row=element.row, sticky=UI.W, pady=5)
-      item_scale.grid(column=0, row=element.row + 1, sticky=UI.W,)
-    container.pack(fill=UI.Y, side="left", padx=10, pady=10)
+      
 
   def color_picker(self):
     tcp = ColorChooserDialog()
