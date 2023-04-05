@@ -17,8 +17,6 @@ class Flash(Service):
   def invoke(self):
     local_player = self.process.read_uint(self.module + Offsets.signatures.dwLocalPlayer)
     flash_addr = local_player + Offsets.netvars.m_flFlashMaxAlpha
-    
-    print(self.is_enabled())
 
     if not self.is_enabled():
       if flash_addr:

@@ -25,12 +25,27 @@ class ESP(Service):
     local_player = self.process.read_int(self.module + Offsets.signatures.dwLocalPlayer)
     local_team = self.process.read_int(local_player + Offsets.netvars.m_iTeamNum)
   
+    # health based esp algorithm
+
+
     for i in range(1, 32 + 1):
       entity = self.process.read_int(self.module + Offsets.signatures.dwEntityList + i * 0x10)
 
       if entity:
         entity_team = self.process.read_int(entity + Offsets.netvars.m_iTeamNum)
         entity_glow = self.process.read_int(entity + Offsets.netvars.m_iGlowIndex)
+
+        if bool(UserConfig['ESP']['HEALTH_BASED']):
+          Color.Alpha = 0.8
+          hp = self.process.read_uint(entity + Offsets.netvars.m_iHealth)
+          if hp > 50:
+            Color.Red = ((100 - hp) * 2.55 + 100) / 255
+            Color.Green = float(1)
+            Color.Blue = float(0)
+          else:
+            Color.Red = float(1)
+            Color.Green = (hp * 255 / 50) / 255
+            Color.Blue = float(0)
 
         if entity_team != local_team and bool(UserConfig['ESP']['ENABLED']):
           self.process.write_float(glow_manager + entity_glow * 0x38 + 0x8, Color.Red)

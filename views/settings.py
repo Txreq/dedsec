@@ -50,7 +50,7 @@ class SettingsTab(UI.Frame):
         row=2
       ),
       Element(
-        label="FLASH",
+        label="Flash",
         key="FLASH",
         row=3,
         scale=True
@@ -91,11 +91,19 @@ class SettingsTab(UI.Frame):
     self.cb_esp_val = UI.IntVar(value=UserConfig['ESP']['ENABLED'])
     self.cb_esp_element = UI.Checkbutton(master=container, text="Glow", variable=self.cb_esp_val)
     self.cb_esp_element.grid(column=0, row=0, sticky=UI.W, pady=5)
-    self.cb_esp_element.bind("<Button>", lambda e: Toggle("ESP"))
+    
+    self.cb_hb_val = UI.IntVar(value=UserConfig['ESP']['HEALTH_BASED'])
+    self.cb_hb_element = UI.Checkbutton(master=container, text="Health Based", variable=self.cb_hb_val)
+    self.cb_hb_element.grid(column=0, row=2, sticky=UI.W, pady=5)
+
     self.enemy_hex = utils.rgbtohex(UserConfig['ESP']['ENEMY_COLOR'])
     self.ecb = UI.Label(master=container, background=self.enemy_hex, width=3, cursor="hand2")
     self.ecl = UI.Label(master=container, text=self.enemy_hex, background="#111111", padding=(20, 0))
+    
+    self.cb_esp_element.bind("<Button>", lambda e: Toggle("ESP"))
+    self.cb_hb_element.bind("<Button>", lambda e: Toggle("ESP", field="HEALTH_BASED"))
     self.ecb.bind("<Button>", lambda e: self.color_picker())
+    
     self.ecb.grid(column=1, row=0, sticky=UI.W, padx=(10, 0), pady=5)
     self.ecl.grid(column=2, row=0, sticky=UI.W, pady=5)
     container.pack(fill=UI.Y, side="left", padx=10, pady=10)
